@@ -1,0 +1,21 @@
+# Runtime configuration may contain deployment details
+meshcentral/config.json
+
+# Persistent server state, certificates, database, agents and user files
+meshcentral/data/
+meshcentral/files/
+meshcentral/backup/
+meshcentral/web/
+
+# Local exports and secrets
+*.tar.gz
+*.zip
+.env
+.env.*
+!.env.example
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
