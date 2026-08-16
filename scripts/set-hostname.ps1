@@ -6,12 +6,14 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $templatePath = Join-Path $PSScriptRoot '..\meshcentral\config.example.json'
-$configPath = Join-Path $PSScriptRoot '..\meshcentral\config.json'
+$configDir = Join-Path $PSScriptRoot '..\meshcentral\data'
+$configPath = Join-Path $configDir 'config.json'
 
 if (-not (Test-Path $templatePath)) {
     throw "Missing configuration template: $templatePath"
 }
 
+New-Item -ItemType Directory -Path $configDir -Force | Out-Null
 (Get-Content $templatePath -Raw).Replace('CONNECT_HOSTNAME', $Hostname) |
     Set-Content -Path $configPath -Encoding utf8NoBOM
 
