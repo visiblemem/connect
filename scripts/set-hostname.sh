@@ -15,15 +15,13 @@ case "$hostname_value" in
     ;;
 esac
 
-config_path="meshcentral/config.json"
-
-if [ ! -f "$config_path" ]; then
-  echo "Create $config_path from config.example.json first." >&2
-  exit 1
-fi
+config_dir="meshcentral/data"
+config_path="$config_dir/config.json"
+mkdir -p "$config_dir"
 
 escaped_hostname=$(printf '%s' "$hostname_value" | sed 's/[&/]/\\&/g')
 sed "s/CONNECT_HOSTNAME/$escaped_hostname/g" meshcentral/config.example.json > "$config_path"
+chmod 600 "$config_path" 2>/dev/null || true
 
 echo "Configured Connect for https://$hostname_value"
 echo "Initialize the admin locally before exposing the tunnel."
