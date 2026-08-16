@@ -1,0 +1,34 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Ylianst/MeshCentral/master/meshcentral-config-schema.json",
+  "settings": {
+    "cert": "CONNECT_HOSTNAME",
+    "WANonly": true,
+    "port": 443,
+    "aliasPort": 443,
+    "redirPort": 80,
+    "redirAliasPort": 80,
+    "agentPing": 60,
+    "agentPong": 60,
+    "browserPing": 60,
+    "browserPong": 60,
+    "sessionTime": 60,
+    "autoBackup": {
+      "backupIntervalHours": 24,
+      "keepLastDaysBackup": 14,
+      "zipPassword": ""
+    }
+  },
+  "domains": {
+    "": {
+      "title": "Connect",
+      "title2": "Private Remote Desktop",
+      "newAccounts": true,
+      "userNameIsEmail": true,
+      "agentInviteCodes": false,
+      "certUrl": "https://CONNECT_HOSTNAME/",
+      "minify": true,
+      "sessionRecording": false,
+      "nightMode": 1
+    }
+  }
+}
